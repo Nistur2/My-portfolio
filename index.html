@@ -1,0 +1,1665 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nestor M. Atchicoso Jr. — Information Systems Professional & Software Developer</title>
+  <meta name="description" content="Professional portfolio of Nestor M. Atchicoso Jr., an Information Systems professional focused on software development, data analytics, digital systems, automation, and technology." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nestor M. Atchicoso Jr. — Information Systems Professional & Software Developer" />
+  <meta property="og:description" content="Software development, information systems, data analytics, and automation — practical digital systems for real operational problems." />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMwYTBhMGEiLz4KICA8dGV4dCB4PSIxNCIgeT0iNDIiIGZvbnQtZmFtaWx5PSJKZXRCcmFpbnMgTW9ubywgbW9ub3NwYWNlIiBmb250LXNpemU9IjI2IiBmaWxsPSIjMmRkNGJmIj4mZ3Q7XzwvdGV4dD4KPC9zdmc+Cg==" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+/* =================================================================
+   PORTFOLIO STYLESHEET
+   Design tokens live at the top under :root and [data-theme="light"].
+   Edit those to retheme the whole site.
+================================================================= */
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #111111;
+  --surface-raised: #17171a;
+  --border: #27272a;
+  --border-strong: #3a3a3f;
+  --text: #f5f5f5;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #6b6b70;
+  --accent: #2dd4bf;
+  --accent-strong: #5eead4;
+  --accent-soft: rgba(45, 212, 191, 0.12);
+  --danger: #f87171;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --max-width: 1280px;
+  --section-pad: clamp(2rem, 4vw, 3rem);
+  --radius-sm: 3px;
+  --radius-md: 6px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 0.5s;
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #fbfbfa;
+  --surface: #f4f4f5;
+  --surface-raised: #ffffff;
+  --border: #e4e4e7;
+  --border-strong: #d4d4d8;
+  --text: #0a0a0a;
+  --text-secondary: #52525b;
+  --text-tertiary: #8a8a90;
+  --accent: #0d9488;
+  --accent-strong: #0f766e;
+  --accent-soft: rgba(13, 148, 136, 0.08);
+  color-scheme: light;
+}
+
+/* ---------- reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+ul { list-style: none; }
+input, textarea { font: inherit; color: inherit; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s var(--ease), color 0.3s var(--ease);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: clamp(1.5rem, 5vw, 3rem);
+}
+
+section { padding-block: var(--section-pad); border-bottom: 1px solid var(--border); }
+section:last-of-type { border-bottom: none; }
+
+/* subtle background grid, used behind the hero */
+.grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.35;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+  pointer-events: none;
+}
+
+/* ---------- typography ---------- */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+.eyebrow .dot { color: var(--accent); }
+
+h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+
+.section-heading {
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  margin-top: 0.6rem;
+}
+.section-subheading {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 46ch;
+  margin-top: 0.75rem;
+}
+.section-head { margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+
+.prose { max-width: 62ch; color: var(--text-secondary); font-size: 1.05rem; line-height: 1.7; }
+.prose + .prose { margin-top: 1.1rem; }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.35rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease), transform 0.2s var(--ease);
+  white-space: nowrap;
+}
+.btn-primary { background: var(--text); color: var(--bg); }
+.btn-primary:hover { background: var(--accent-strong); transform: translateY(-1px); }
+.btn-secondary { border-color: var(--border-strong); color: var(--text); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.btn-row { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem 0.4rem 0.65rem;
+}
+.pulse-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 var(--accent-soft);
+  animation: pulse 2.4s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(45, 212, 191, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(45, 212, 191, 0); }
+}
+
+/* ---------- app shell (boxed, tabbed layout) ---------- */
+html, body {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.app-shell {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  padding: clamp(0.75rem, 2.5vw, 1.75rem);
+}
+
+.app-box {
+  width: min(1180px, 100%);
+  height: min(820px, 100%);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--bg);
+  overflow: hidden;
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.5);
+}
+[data-theme="light"] .app-box { box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.18); }
+
+.app-titlebar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.app-titlebar-left { display: flex; align-items: center; gap: 0.75rem; }
+.app-dots { display: flex; gap: 6px; }
+.app-dots span { width: 9px; height: 9px; border-radius: 50%; background: var(--border-strong); }
+.app-title {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+}
+.app-titlebar-actions { display: flex; align-items: center; gap: 0.6rem; }
+
+.app-tabs {
+  flex-shrink: 0;
+  display: flex;
+  gap: 0.25rem;
+  padding-inline: 0.75rem;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.app-tabs::-webkit-scrollbar { display: none; }
+.app-tab {
+  flex-shrink: 0;
+  padding: 0.9rem 0.9rem;
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.app-tab:hover { color: var(--text); }
+.app-tab.active { color: var(--text); border-bottom-color: var(--accent); }
+
+.app-content {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: 
+    linear-gradient(
+      -45deg,
+      var(--bg),
+      var(--surface),
+      var(--bg)
+    );
+  background-size: 400% 400%;
+  animation: gradientFlow 15s ease infinite;
+  position: relative;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.app-content::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 30%, var(--accent-soft) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, var(--accent-soft) 0%, transparent 40%);
+  pointer-events: none;
+  animation: glowFlow 20s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes glowFlow {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.3; }
+}
+
+.app-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+.app-content .container { padding-inline: clamp(1.25rem, 3vw, 2.5rem); }
+
+.tab-panel { display: none; position: relative; z-index: 1; }
+.tab-panel.active { display: block; animation: tabIn 0.3s var(--ease); }
+@keyframes tabIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tab-panel.active { animation: none; }
+}
+
+.theme-toggle {
+  width: 32px; height: 32px;
+  display: grid; place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+.theme-toggle svg { width: 15px; height: 15px; }
+.theme-toggle .icon-sun { display: none; }
+[data-theme="light"] .theme-toggle .icon-moon { display: none; }
+[data-theme="light"] .theme-toggle .icon-sun { display: block; }
+
+.app-footer { flex-shrink: 0; display: flex; gap: 1.5rem; align-items: center; }
+.app-footer p { color: var(--text-tertiary); font-size: 0.78rem; font-family: var(--font-mono); }
+.app-footer .footer-links { display: flex; gap: 1.25rem; }
+.app-footer .footer-links a { color: var(--text-tertiary); font-size: 0.78rem; transition: color 0.2s var(--ease); }
+.app-footer .footer-links a:hover { color: var(--accent); }
+
+/* ---------- hero ---------- */
+.hero { position: relative; overflow: hidden; padding-top: clamp(1.5rem, 3vw, 2.5rem); }
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+.hero-heading { font-size: clamp(2.4rem, 5.2vw, 4rem); margin-top: 1.1rem; max-width: 14ch; }
+.hero-sub { margin-top: 1.5rem; font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: var(--text-secondary); max-width: 46ch; }
+.hero-desc { margin-top: 1.1rem; color: var(--text-tertiary); max-width: 50ch; line-height: 1.65; }
+.hero-actions { margin-top: 2.25rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem; }
+.hero-availability { margin-top: 1.1rem; font-size: 0.85rem; color: var(--text-tertiary); max-width: 46ch; line-height: 1.6; }
+.hero-path { margin-top: 1.5rem; }
+.hero-path-steps { margin-top: 0.6rem; display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
+.hero-path-steps span { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); }
+.hero-path-steps span:last-child { color: var(--accent); }
+.hero-path-arrow { color: var(--text-tertiary) !important; }
+
+.hero-panel {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  overflow: hidden;
+}
+.hero-panel-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.85rem 1.1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+}
+.hero-panel-dots { display: flex; gap: 5px; }
+.hero-panel-dots span { width: 7px; height: 7px; border-radius: 50%; background: var(--border-strong); }
+.hero-panel-body { padding: 1.4rem 1.1rem 1.6rem; }
+.hero-panel-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.35rem; color: var(--text-secondary); }
+.hero-panel-row .val { color: var(--accent); display: inline-flex; align-items: center; gap: 0.4rem; }
+.hero-panel-list { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.35rem; }
+.hero-panel-list li { color: var(--text); position: relative; padding-left: 1.1rem; }
+.hero-panel-list li::before { content: "›"; position: absolute; left: 0; color: var(--accent); }
+.hero-panel-foot { border-top: 1px solid var(--border); padding-top: 1.1rem; color: var(--text-secondary); }
+.hero-panel-foot .val { color: var(--text); }
+
+/* ---------- about ---------- */
+.about-grid { display: grid; grid-template-columns: minmax(220px, 320px) 1fr; gap: clamp(2rem, 5vw, 4rem); }
+.about-side { display: flex; flex-direction: column; gap: 1rem; }
+.about-photo {
+  position: relative;
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  cursor: crosshair;
+}
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+.about-photo-hint {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+/* ---------- work list ---------- */
+.work-list { display: flex; flex-direction: column; }
+.work-row {
+  display: grid;
+  grid-template-columns: 3.5rem 1.4fr 1fr auto;
+  gap: 1.75rem;
+  align-items: start;
+  padding-block: 2.25rem;
+  border-top: 1px solid var(--border);
+  transition: background-color 0.25s var(--ease);
+}
+.work-list a.work-row:hover { background: var(--surface); }
+.work-row:last-child { border-bottom: 1px solid var(--border); }
+.work-num { font-family: var(--font-mono); color: var(--text-tertiary); font-size: 0.9rem; padding-top: 0.15rem; }
+.work-main h3 { font-size: 1.35rem; }
+.work-cat { margin-top: 0.5rem; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); }
+.work-desc { color: var(--text-secondary); font-size: 0.95rem; max-width: 48ch; margin-top: 0.35rem; }
+.work-role { color: var(--text-tertiary); font-size: 0.85rem; align-self: center; }
+.work-role span { display: block; font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.3rem; }
+.work-link { align-self: center; font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; display: inline-flex; align-items: center; gap: 0.4rem; transition: color 0.2s var(--ease), gap 0.2s var(--ease); }
+.work-list a.work-row:hover .work-link { color: var(--accent); gap: 0.6rem; }
+
+.collection-note { margin-top: clamp(2.5rem, 5vw, 4rem); }
+.collection-note .work-cat { margin-bottom: 1.25rem; }
+.collection-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+.collection-card { border: 1px dashed var(--border-strong); border-radius: var(--radius-md); padding: 1.5rem; }
+.collection-card h4 { font-size: 1rem; color: var(--text-tertiary); font-weight: 500; }
+.collection-card p { margin-top: 0.5rem; font-size: 0.88rem; color: var(--text-tertiary); }
+
+/* ---------- timeline (experience + education) ---------- */
+.timeline { position: relative; }
+.timeline-item {
+  display: grid;
+  grid-template-columns: 6rem 1fr;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  padding-block: 2.25rem;
+  border-top: 1px solid var(--border);
+}
+.timeline-item:last-child { border-bottom: 1px solid var(--border); }
+.timeline-year { font-family: var(--font-mono); color: var(--text-secondary); font-size: 0.9rem; padding-top: 0.15rem; }
+.timeline-org { font-size: 1.2rem; }
+.timeline-role { color: var(--accent); font-family: var(--font-mono); font-size: 0.76rem; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 0.5rem; }
+.timeline-period { color: var(--text-tertiary); font-size: 0.85rem; margin-top: 0.25rem; }
+.timeline-points { margin-top: 1.1rem; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 0.5rem 1.5rem; }
+.timeline-points li { position: relative; padding-left: 1.1rem; color: var(--text-secondary); font-size: 0.92rem; }
+.timeline-points li::before { content: "\2013"; position: absolute; left: 0; color: var(--text-tertiary); }
+
+.edu-course-list { margin-top: 1.1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.edu-course-list span { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.03em; color: var(--text-secondary); border: 1px solid var(--border); border-radius: 999px; padding: 0.3rem 0.75rem; }
+
+/* ---------- skills ---------- */
+.skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.skill-card { background: var(--bg); padding: 1.75rem; }
+.skill-card h3 { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--accent); font-weight: 500; }
+.skill-card ul { margin-top: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
+.skill-card li { color: var(--text-secondary); font-size: 0.92rem; }
+
+/* ---------- certifications ---------- */
+.cred-grid { display: flex; flex-direction: column; }
+.cred-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1.5rem;
+  align-items: baseline;
+  padding-block: 1.15rem;
+  border-top: 1px solid var(--border);
+}
+.cred-row:last-child { border-bottom: 1px solid var(--border); }
+.cred-name { font-size: 1rem; }
+.cred-issuer { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-secondary); text-align: right; }
+.cred-date { font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-tertiary); text-align: right; white-space: nowrap; }
+
+/* ---------- beyond the code ---------- */
+.beyond-intro { max-width: 60ch; }
+.beyond-grid { 
+  margin-top: clamp(2.5rem, 5vw, 4rem); 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1.5rem; 
+  perspective: 1200px;
+}
+.beyond-card-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  cursor: pointer;
+}
+.beyond-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-style: preserve-3d;
+}
+.beyond-card-wrapper.flipped .beyond-card-inner {
+  transform: rotateY(180deg);
+}
+.beyond-card-front, .beyond-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  padding: 2rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.beyond-card-back {
+  transform: rotateY(180deg);
+  background: var(--surface-raised);
+  border-color: var(--accent);
+}
+.beyond-card {
+  width: 100%;
+  height: 100%;
+}
+.beyond-num { 
+  font-family: var(--font-mono); 
+  color: var(--text-tertiary); 
+  font-size: 0.85rem; 
+}
+.beyond-card h3 { 
+  margin-top: 0.85rem; 
+  font-size: 1.2rem; 
+}
+.beyond-card ul { 
+  margin-top: 1.1rem; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.55rem; 
+  flex: 1;
+}
+.beyond-card li { 
+  color: var(--text-secondary); 
+  font-size: 0.92rem; 
+}
+.beyond-card-back h4 {
+  font-size: 1rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.beyond-card-back p {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  flex: 1;
+  overflow-y: auto;
+}
+.beyond-flip-hint {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: auto;
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- terminal ---------- */
+.terminal {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  overflow: hidden;
+}
+.terminal-bar { display: flex; align-items: center; gap: 6px; padding: 0.8rem 1.1rem; border-bottom: 1px solid var(--border); }
+.terminal-bar span { width: 8px; height: 8px; border-radius: 50%; background: var(--border-strong); }
+.terminal-body { padding: 1.5rem 1.4rem 1.8rem; line-height: 1.9; }
+.term-line { color: var(--text-secondary); }
+.term-prompt { color: var(--accent); }
+.term-output { color: var(--text); white-space: pre-line; padding-left: 1.3rem; display: block; }
+.term-cursor { display: inline-block; width: 7px; height: 1.05em; background: var(--accent); vertical-align: -0.15em; animation: blink 1s step-end infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ---------- contact ---------- */
+.contact-section { text-align: left; }
+.contact-heading { font-size: clamp(2rem, 4.5vw, 3.25rem); max-width: 16ch; }
+.contact-text { margin-top: 1rem; color: var(--text-secondary); font-size: 1.1rem; max-width: 46ch; }
+.contact-actions { margin-top: 2.25rem; }
+.contact-links { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; font-family: var(--font-mono); font-size: 0.85rem; }
+.contact-links a { color: var(--text-secondary); transition: color 0.2s var(--ease); }
+.contact-links a:hover { color: var(--accent); }
+
+/* ---------- footer ---------- */
+.site-footer { padding-block: 2.5rem; }
+.footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-inner p { color: var(--text-tertiary); font-size: 0.85rem; font-family: var(--font-mono); }
+.footer-links { display: flex; gap: 1.5rem; }
+.footer-links a { color: var(--text-tertiary); font-size: 0.85rem; transition: color 0.2s var(--ease); }
+.footer-links a:hover { color: var(--accent); }
+
+/* ---------- case study page ---------- */
+.cs-hero { padding-top: clamp(3rem, 7vw, 5rem); padding-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+.cs-back { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-secondary); }
+.cs-back:hover { color: var(--accent); }
+.cs-title { font-size: clamp(2rem, 4.5vw, 3.25rem); margin-top: 1.25rem; max-width: 20ch; }
+.cs-meta { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: 0.6rem 2.5rem; }
+.cs-meta-item span { display: block; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 0.35rem; }
+.cs-meta-item strong { font-weight: 500; font-size: 0.95rem; }
+
+.cs-block { padding-block: clamp(2.5rem, 5vw, 3.5rem); border-top: 1px solid var(--border); }
+.cs-block-head { display: grid; grid-template-columns: 6rem 1fr; gap: clamp(1.5rem, 4vw, 3rem); }
+.cs-block-num { font-family: var(--font-mono); color: var(--text-tertiary); font-size: 0.85rem; padding-top: 0.2rem; }
+.cs-block h2 { font-size: 1.5rem; }
+.cs-block .prose { margin-top: 1rem; max-width: 68ch; }
+
+.arch-flow { margin-top: 1.5rem; display: flex; flex-direction: column; align-items: flex-start; gap: 0; }
+.arch-step { border: 1px solid var(--border-strong); border-radius: var(--radius-sm); padding: 0.85rem 1.4rem; font-family: var(--font-mono); font-size: 0.88rem; background: var(--surface); }
+.arch-arrow { color: var(--text-tertiary); font-family: var(--font-mono); padding-block: 0.4rem; padding-left: 1.6rem; }
+
+.placeholder-box {
+  margin-top: 1.5rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  max-width: 60ch;
+}
+
+.cs-nav-between { display: flex; justify-content: space-between; padding-block: 2.5rem; }
+.cs-nav-between a { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); }
+.cs-nav-between a:hover { color: var(--accent); }
+
+/* ---------- responsive ---------- */
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-panel { max-width: 480px; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-grid .eyebrow { margin-bottom: 0.5rem; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .beyond-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .beyond-card-wrapper { height: 280px; }
+  .timeline-points { grid-template-columns: 1fr; }
+  .work-row { grid-template-columns: 2.5rem 1fr; }
+  .work-role, .work-link { grid-column: 2; }
+  .work-link { margin-top: 0.5rem; }
+}
+
+@media (max-width: 720px) {
+  .app-shell { padding: 0; gap: 0; }
+  .app-box { width: 100%; height: 100%; border-radius: 0; border-left: none; border-right: none; }
+  .app-footer { display: none; }
+  .app-tab { padding: 0.85rem 0.7rem; font-size: 0.78rem; }
+  .collection-grid { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .beyond-grid { grid-template-columns: 1fr; }
+  .beyond-card-wrapper { height: 320px; }
+  .cred-row { grid-template-columns: 1fr; gap: 0.35rem; }
+  .cred-issuer, .cred-date { text-align: left; }
+  .cs-block-head, .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+  .cs-block-num, .timeline-year { padding-top: 0; }
+}
+  </style>
+</head>
+<body>
+
+  <div class="app-shell">
+    <div class="app-box">
+      <div class="app-titlebar">
+        <div class="app-titlebar-left">
+          <span class="app-dots"><span></span><span></span><span></span></span>
+          <span class="app-title" data-nav-logo>nestor.dev</span>
+        </div>
+        <div class="app-titlebar-actions">
+          <button class="theme-toggle" data-theme-toggle aria-label="Toggle color theme">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="app-tabs" data-tabs aria-label="Sections"></nav>
+
+      <div class="app-content" id="app-content">
+        <div class="tab-panel" data-tab-panel="home">
+          <section class="hero" id="hero-root" aria-label="Introduction"></section>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="about">
+          <section aria-label="About"><div id="about-root"></div></section>
+          <section aria-label="Beyond the code"><div id="beyond-root"></div></section>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="work">
+          <div id="work-list-view">
+            <section aria-label="Selected work"><div id="work-root"></div></section>
+          </div>
+          <div id="work-case-study-view" aria-label="Case study" hidden></div>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="experience">
+          <section aria-label="Experience"><div id="experience-root"></div></section>
+          <section aria-label="Education"><div id="education-root"></div></section>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="skills">
+          <section aria-label="Technical skills"><div id="skills-root"></div></section>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="credentials">
+          <section aria-label="Credentials"><div id="credentials-root"></div></section>
+        </div>
+
+        <div class="tab-panel" data-tab-panel="contact">
+          <section aria-label="Contact"><div id="contact-root"></div></section>
+          <section aria-label="Terminal"><div id="terminal-root"></div></section>
+        </div>
+      </div>
+    </div>
+
+    <footer class="app-footer">
+      <p>&copy; <span data-footer-year></span> Nestor M. Atchicoso Jr.</p>
+      <div class="footer-links">
+        <a href="mailto:atchicosojrnestor@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/nestor-atchicoso-7a21a4182/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+/**
+ * PORTFOLIO CONTENT
+ * ------------------
+ * Every piece of editable text on the site lives in this file.
+ * To update a project, add a job, or fix a typo, edit the values
+ * below — you don't need to touch the HTML or CSS.
+ *
+ * Anything wrapped like "— add ... —" is a placeholder. Replace it
+ * with real information when you have it; nothing was invented for
+ * fields that weren't confirmed.
+ */
+
+window.PORTFOLIO_DATA = {
+
+  meta: {
+    name: "Nestor M. Atchicoso Jr.",
+    shortName: "Nestor Atchicoso",
+    logo: "NESTOR.DEV",
+    role: "Information Systems Professional",
+    tagline: "Software Developer · Data · Automation · Digital Systems",
+    pageTitle: "Nestor M. Atchicoso Jr. — Information Systems Professional & Software Developer",
+    metaDescription: "Professional portfolio of Nestor M. Atchicoso Jr., an Information Systems professional focused on software development, data analytics, digital systems, automation, and technology."
+  },
+
+  nav: [
+    { label: "Work", href: "#work" },
+    { label: "About", href: "#about" },
+    { label: "Experience", href: "#experience" },
+    { label: "Skills", href: "#skills" },
+    { label: "Credentials", href: "#credentials" },
+    { label: "Contact", href: "#contact" }
+  ],
+
+  hero: {
+    label: "Information Systems · Software · Data",
+    heading: "Building digital systems for real-world problems.",
+    subheading: "I design and develop practical digital solutions across software, information systems, data, automation, and business operations.",
+    description: "I\u2019m an Information Systems professional with experience in software development, web development, data analytics, technical support, payroll systems, and digital workflow solutions.",
+    primaryCta: { label: "View my work", href: "#work" },
+    secondaryCta: { label: "Let\u2019s connect", href: "#contact" },
+    status: "Open to opportunities",
+    availability: "Open to remote, on-site, or hybrid roles with virtual assistant companies, IT companies, and tech-industry teams.",
+    careerPath: {
+      label: "Aspiring career path",
+      steps: ["IT Specailist", "Systems Analyst", "Virtual Assistant"]
+    },
+    panel: {
+      title: "NESTOR.DEV",
+      statusLabel: "SYSTEM STATUS",
+      statusValue: "ONLINE",
+      focusLabel: "CURRENT FOCUS",
+      focusValue: "Digital Systems + Data",
+      rows: [
+        "Software Development",
+        "Data Analytics",
+        "Information Systems",
+        "Automation"
+      ]
+    }
+  },
+
+  about: {
+    label: "About",
+    paragraphs: [
+      "Hi, I\u2019m Nestor Atchicoso Jr. I\u2019m someone who enjoys learning, solving problems, and turning ideas into something useful. I\u2019ve had opportunities to work with different systems, handle data, troubleshoot technical problems, and create digital solutions. These experiences taught me to be patient, adaptable, detail-oriented, and willing to learn whenever I encounter something new.",
+      "I enjoy working on projects where I can take an idea, understand the problem behind it, and find a practical way to solve it. I\u2019ve also learned that technology is not only about creating something that works, but about creating something that can actually make a task easier for people.",
+      "I\u2019m continuously improving myself by learning new tools, exploring new technologies, and working on projects that challenge me. I believe that every experience, whether successful or difficult, gives me something valuable to learn from. My goal is to keep growing, create meaningful solutions, and become better at what I do."
+    ],
+    photo: {
+      images: [
+        "Atchicoso Nester - -.JPG",
+        "Atchicoso Nester c -.JPG"
+      ]
+    }
+  },
+
+  work: {
+    label: "Selected Work",
+    subheading: "Projects and systems built around real operational problems."
+  },
+
+  /**
+   * PROJECTS
+   * type: "case-study"  -> gets a full case-study view (Work tab -> #case-study/slug)
+   */
+  projects: [
+    {
+      slug: "document-tracking-system",
+      number: "01",
+      name: "Document Tracking System",
+      category: "Information Systems \u00b7 Internal Systems \u00b7 Workflow",
+      description: "A system developed and maintained to support document tracking and improve internal information management.",
+      role: "Junior Developer",
+      type: "case-study",
+      caseStudy: {
+        overview: "An internal digital system designed to support document tracking and information management.",
+        problem: "Manual or fragmented document processes can make tracking and retrieval difficult.",
+        solution: "A structured digital system for managing and monitoring documents.",
+        role: "Junior Developer",
+        architecture: ["User", "Application", "Database", "Document / Information Management"],
+        technologies: null,
+        implementation: null,
+        outcome: null
+      }
+    },
+    {
+      slug: "payroll-management-system",
+      number: "02",
+      name: "Payroll Management System",
+      category: "Information Systems \u00b7 Payroll \u00b7 Data",
+      description: "An internal payroll-related system supporting payroll management and operational processes.",
+      role: "Junior Developer / Payroll Specialist",
+      type: "case-study",
+      caseStudy: {
+        overview: "An internal payroll-related system built to support payroll management and day-to-day operational processes.",
+        problem: "Payroll processes that rely on manual steps or disconnected tools can be slow and difficult to keep consistent.",
+        solution: "A system built to support payroll management workflows and related operational needs.",
+        role: "Junior Developer / Payroll Specialist",
+        architecture: null,
+        technologies: null,
+        implementation: null,
+        outcome: null
+      }
+    },
+    {
+      slug: "employee-information-system",
+      number: "03",
+      name: "Employee Information System",
+      category: "HRIS \u00b7 Database \u00b7 Information Management",
+      description: "An internal system supporting employee information management and organizational data.",
+      role: "Junior Developer",
+      type: "case-study",
+      caseStudy: {
+        overview: "An internal system supporting the management of employee information and organizational data.",
+        problem: "Keeping employee records organized, accurate, and accessible is difficult without a dedicated system.",
+        solution: "A system built to structure, store, and manage employee information and organizational data.",
+        role: "Junior Developer",
+        architecture: null,
+        technologies: null,
+        implementation: null,
+        outcome: null
+      }
+    }
+  ],
+
+  experience: {
+    label: "Experience",
+    items: [
+      {
+        year: "2026",
+        org: "Department of Agrarian Reform Region VI",
+        role: "Human Resource Information System (HRIS)",
+        period: "April 2026",
+        points: [
+          "Employee Records Management",
+          "Payroll Management",
+          "Employee Information Management",
+          "Leave and Attendance Management",
+          "HR Reporting and Analytics",
+          "Document Management",
+          "Personnel Data Maintenance",
+          "Recruitment and Onboarding",
+          "Performance Management",
+          "HR Process Automation",
+          "Data Security and Access Control",
+          "Employee Self-Service"
+        ]
+      },
+      {
+        year: "2025",
+        org: "Metro Iloilo Hospital & Medical Center, Inc.",
+        role: "Payroll Specialist & IT Support",
+        period: "July 2025",
+        points: [
+          "Payroll processing",
+          "Payroll-related operations",
+          "IT troubleshooting",
+          "Technical support",
+          "Web development",
+          "Full-stack development",
+          "Supporting reliable information systems"
+        ]
+      }
+    ]
+  },
+
+  education: {
+    label: "Education",
+    items: [
+      {
+        degree: "Master of Information Technology",
+        school: "West Visayas State University",
+        period: "June 2025 \u2013 Present",
+        coursework: [
+          "Information Technology and Systems Management",
+          "Database Management and Data Analytics",
+          "Software Development and Systems Analysis",
+          "IT Project Management",
+          "Information Systems and Enterprise Technology",
+          "Cybersecurity and Information Security",
+          "Data Mining and Machine Learning",
+          "Research Methods and Statistical Analysis",
+          "Systems Architecture and Infrastructure",
+          "Technology Innovation and Digital Transformation"
+        ]
+      },
+      {
+        degree: "Bachelor of Science in Information System",
+        school: "Iloilo Science and Technology University",
+        period: "June 2021 \u2013 2025",
+        coursework: [
+          "Database Systems",
+          "Computer Science",
+          "Management",
+          "Business Software Development",
+          "Project Management",
+          "Data Analysis",
+          "Graphic Design",
+          "Web Development"
+        ]
+      }
+    ]
+  },
+
+  skills: {
+    label: "Technical Skills",
+    categories: [
+      {
+        title: "Software & Web",
+        items: ["Web Development", "Full-Stack Development", "Frontend Development", "Backend Development"]
+      },
+      {
+        title: "Data",
+        items: ["Data Analytics", "Data Mining", "Data Scraping", "Data Cleaning", "Data Validation", "Python"]
+      },
+      {
+        title: "Information Systems",
+        items: ["Systems Development", "Database Systems", "Employee Information Systems", "Document Tracking", "Payroll Management"]
+      },
+      {
+        title: "IT",
+        items: ["Technical Troubleshooting", "Computer Systems Servicing", "IT Support"]
+      },
+      {
+        title: "Design",
+        items: ["Graphic Design", "Digital Design", "T-Shirt Layout Design"]
+      },
+      {
+        title: "Project / Business",
+        items: ["Project Management", "Business Software Development", "Process Improvement"]
+      }
+    ]
+  },
+
+  certifications: {
+    label: "Credentials",
+    items: [
+      { name: "Python Data Associate", issuer: "DataCamp", date: "December 12, 2024" },
+      { name: "Data Analytics Essentials", issuer: "Cisco", date: "April 29, 2024" },
+      { name: "Employability Skills \u2013 Job Ready", issuer: "Wadhwani", date: "May 29, 2025" },
+      { name: "Project Management Essentials", issuer: "DisasterReady.org", date: "April 23, 2024" },
+      { name: "NC III \u2013 Graphic Design", issuer: "TESDA / TOP", date: "May 2, 2025" },
+      { name: "NC II \u2013 Computer Systems Servicing", issuer: "TESDA / TOP", date: "May 5, 2025" },
+      { name: "ADP Entry-Level Payroll Specialist Specialization", issuer: "Coursera", date: "August 8, 2025" },
+      { name: "Python Developer", issuer: "Coursera / EDUCBA", date: "February 25, 2026" }
+    ]
+  },
+
+  beyondTheCode: {
+    label: "Beyond the Code",
+    intro: "My background isn\u2019t limited to software development \u2014 it spans the technical, analytical, and operational sides of building systems people actually use.",
+    dimensions: [
+      {
+        number: "01",
+        title: "Technology",
+        items: ["Software", "Information Systems", "Web Development", "IT Support"],
+        backContent: "I build and maintain robust technical infrastructure. From designing scalable systems to supporting end-users, I understand the full lifecycle of technology implementation in organizations."
+      },
+      {
+        number: "02",
+        title: "Data",
+        items: ["Python", "Data Analytics", "Data Scraping", "Data Mining", "Data Management"],
+        backContent: "I transform raw data into actionable insights. Whether through Python automation, statistical analysis, or machine learning approaches, I extract meaning from complex datasets."
+      },
+      {
+        number: "03",
+        title: "Business & Design",
+        items: ["Payroll", "Project Management", "Graphic Design", "Business Processes"],
+        backContent: "I bridge technology and business outcomes. I understand operational workflows, can manage projects effectively, and create visual designs that communicate ideas clearly."
+      }
+    ]
+  },
+
+  terminal: {
+    lines: [
+      { cmd: "whoami", output: "nestor-atchicoso" },
+      { cmd: "role", output: "Information Systems Professional" },
+      { cmd: "focus", output: "Software Development\nInformation Systems\nData Analytics\nAutomation" },
+      { cmd: "interests", output: "Systems\nData\nAI\nTechnology" },
+      { cmd: "status", output: "\u25cf Open to opportunities" }
+    ]
+  },
+
+  contact: {
+    label: "Let\u2019s build something useful.",
+    text: "Have a project, technical opportunity, or idea in mind? Let\u2019s connect.",
+    email: "atchicosojrnestor@gmail.com",
+    linkedin: "https://www.linkedin.com/in/nestor-atchicoso-7a21a4182/"
+  }
+};
+  </script>
+  <script>
+/**
+ * SITE BEHAVIOR (boxed / tabbed layout)
+ * All copy comes from PORTFOLIO_DATA, defined in the <script> block
+ * above this one. This file renders it and wires up interaction —
+ * theme toggle, tabs, and a hash router that switches between tabs
+ * (and between the Work tab's project list and a case-study view)
+ * without any page reload or page-level scrolling.
+ *
+ * Note: theme preference is kept in memory for the current page view
+ * (it follows your system preference on load) rather than saved to
+ * the browser, so it resets on reload.
+ */
+
+(function () {
+  const D = window.PORTFOLIO_DATA;
+  document.title = D.meta.pageTitle;
+
+  const metaDesc = document.querySelector('meta[name="description"]');
+  if (metaDesc) metaDesc.setAttribute("content", D.meta.metaDescription);
+
+  const TAB_IDS = ["home", "about", "work", "experience", "skills", "credentials", "contact"];
+
+  /* ---------------- theme ---------------- */
+  function initTheme() {
+    const root = document.documentElement;
+    const prefersLight = window.matchMedia ? window.matchMedia("(prefers-color-scheme: light)").matches : false;
+    root.setAttribute("data-theme", prefersLight ? "light" : "dark");
+
+    document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme");
+        root.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+      });
+    });
+  }
+
+  /* ---------------- tabs ---------------- */
+  function renderTabs() {
+    const tabs = [{ label: "Home", href: "#home" }, ...D.nav];
+    document.querySelectorAll("[data-tabs]").forEach((container) => {
+      container.innerHTML = tabs
+        .map((item) => {
+          const id = item.href.replace("#", "");
+          return `<button type="button" class="app-tab" data-tab="${id}">${item.label}</button>`;
+        })
+        .join("");
+      container.querySelectorAll(".app-tab").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          location.hash = "#" + btn.getAttribute("data-tab");
+        });
+      });
+    });
+    document.querySelectorAll("[data-nav-logo]").forEach((el) => (el.textContent = D.meta.logo));
+  }
+
+  function activateTab(id) {
+    document.querySelectorAll(".tab-panel").forEach((panel) => {
+      panel.classList.toggle("active", panel.getAttribute("data-tab-panel") === id);
+    });
+    document.querySelectorAll(".app-tab").forEach((btn) => {
+      btn.classList.toggle("active", btn.getAttribute("data-tab") === id);
+    });
+    const content = document.getElementById("app-content");
+    if (content) content.scrollTop = 0;
+  }
+
+  /* ---------------- shared: footer ---------------- */
+  function renderFooter() {
+    document.querySelectorAll("[data-footer-year]").forEach((el) => {
+      el.textContent = new Date().getFullYear();
+    });
+  }
+
+  /* ---------------- home view render ---------------- */
+  function renderHero() {
+    const el = document.getElementById("hero-root");
+    if (!el) return;
+    const h = D.hero;
+    el.innerHTML = `
+      <div class="grid-bg" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow"><span class="dot">&bull;</span> ${h.label}</p>
+          <h1 class="hero-heading">${h.heading}</h1>
+          <p class="hero-sub">${h.subheading}</p>
+          <p class="hero-desc">${h.description}</p>
+          <div class="hero-actions">
+            <div class="btn-row">
+              <a class="btn btn-primary" href="${h.primaryCta.href}">${h.primaryCta.label}</a>
+              <a class="btn btn-secondary" href="${h.secondaryCta.href}">${h.secondaryCta.label}</a>
+            </div>
+            <span class="status-pill"><span class="pulse-dot"></span>${h.status}</span>
+          </div>
+          ${h.availability ? `<p class="hero-availability">${h.availability}</p>` : ""}
+          ${
+            h.careerPath
+              ? `<div class="hero-path">
+                  <span class="eyebrow">${h.careerPath.label}</span>
+                  <div class="hero-path-steps">
+                    ${h.careerPath.steps
+                      .map((s, i) => `<span>${s}</span>${i < h.careerPath.steps.length - 1 ? '<span class="hero-path-arrow">&rarr;</span>' : ""}`)
+                      .join("")}
+                  </div>
+                </div>`
+              : ""
+          }
+        </div>
+        <div class="hero-panel">
+          <div class="hero-panel-bar">
+            <span>${h.panel.title}</span>
+            <span class="hero-panel-dots"><span></span><span></span><span></span></span>
+          </div>
+          <div class="hero-panel-body">
+            <div class="hero-panel-row">
+              <span>${h.panel.statusLabel}</span>
+              <span class="val"><span class="pulse-dot"></span>${h.panel.statusValue}</span>
+            </div>
+            <ul class="hero-panel-list">
+              ${h.panel.rows.map((r) => `<li>${r}</li>`).join("")}
+            </ul>
+            <div class="hero-panel-foot">
+              <div>${h.panel.focusLabel}</div>
+              <div class="val" style="margin-top:0.35rem;">${h.panel.focusValue}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderAbout() {
+    const el = document.getElementById("about-root");
+    if (!el) return;
+    const a = D.about;
+    const photo = a.photo;
+    el.innerHTML = `
+      <div class="container about-grid">
+        <div class="about-side">
+          <p class="eyebrow">${a.label}</p>
+          ${
+            photo && photo.images && photo.images.length
+              ? `<div class="about-photo" id="about-photo">
+                  <img src="${photo.images[0]}" id="about-photo-img" alt="Nestor M. Atchicoso Jr." draggable="false" />
+                </div>
+                <p class="about-photo-hint">${photo.hint || ""}</p>`
+              : ""
+          }
+        </div>
+        <div>
+          ${a.paragraphs.map((p) => `<p class="prose">${p}</p>`).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function initAboutPhoto() {
+    const container = document.getElementById("about-photo");
+    const img = document.getElementById("about-photo-img");
+    const images = D.about.photo && D.about.photo.images;
+    if (!container || !img || !images || images.length < 2) return;
+
+    images.forEach((src) => {
+      const preload = new Image();
+      preload.src = src;
+    });
+
+    let current = 0;
+    function setFromClientX(clientX) {
+      const rect = container.getBoundingClientRect();
+      const pct = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+      const idx = Math.min(images.length - 1, Math.floor(pct * images.length));
+      if (idx !== current) {
+        current = idx;
+        img.src = images[idx];
+      }
+    }
+
+    container.addEventListener("mousemove", (e) => setFromClientX(e.clientX));
+    container.addEventListener("mouseleave", () => {
+      current = 0;
+      img.src = images[0];
+    });
+    container.addEventListener(
+      "touchmove",
+      (e) => {
+        if (e.touches && e.touches[0]) setFromClientX(e.touches[0].clientX);
+      },
+      { passive: true }
+    );
+  }
+
+  function renderWork() {
+    const el = document.getElementById("work-root");
+    if (!el) return;
+    const w = D.work;
+    const caseStudies = D.projects.filter((p) => p.type === "case-study");
+    const collections = D.projects.filter((p) => p.type === "collection");
+
+    const rows = caseStudies
+      .map(
+        (p) => `
+      <a class="work-row" href="#case-study/${p.slug}">
+        <span class="work-num">${p.number}</span>
+        <div class="work-main">
+          <h3>${p.name}</h3>
+          <p class="work-cat">${p.category}</p>
+          <p class="work-desc">${p.description}</p>
+        </div>
+        <div class="work-role"><span>Role</span>${p.role}</div>
+        <span class="work-link">View case study &rarr;</span>
+      </a>`
+      )
+      .join("");
+
+    const collectionBlocks = collections
+      .map(
+        (p) => `
+      <div class="collection-note">
+        <p class="work-cat">${p.number} &middot; ${p.category}</p>
+        <h3 style="margin-top:0.5rem;">${p.name}</h3>
+        <p class="section-subheading" style="margin-top:0.4rem;">${p.description}</p>
+        <div class="collection-grid" style="margin-top:1.5rem;">
+          ${p.items
+            .map((i) => `<div class="collection-card"><h4>${i.title}</h4><p>${i.description}</p></div>`)
+            .join("")}
+        </div>
+      </div>`
+      )
+      .join("");
+
+    el.innerHTML = `
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">${w.label}</p>
+          <h2 class="section-heading">${w.subheading}</h2>
+        </div>
+        <div class="work-list">${rows}</div>
+        ${collectionBlocks}
+      </div>
+    `;
+  }
+
+  function renderExperience() {
+    const el = document.getElementById("experience-root");
+    if (!el) return;
+    const e = D.experience;
+    el.innerHTML = `
+      <div class="container">
+        <p class="eyebrow">${e.label}</p>
+        <div class="timeline" style="margin-top:2rem;">
+          ${e.items
+            .map(
+              (item) => `
+            <div class="timeline-item">
+              <div class="timeline-year">${item.year}</div>
+              <div>
+                <h3 class="timeline-org">${item.org}</h3>
+                <p class="timeline-role">${item.role}</p>
+                <p class="timeline-period">${item.period}</p>
+                <ul class="timeline-points">
+                  ${item.points.map((pt) => `<li>${pt}</li>`).join("")}
+                </ul>
+              </div>
+            </div>`
+            )
+            .join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderEducation() {
+    const el = document.getElementById("education-root");
+    if (!el) return;
+    const ed = D.education;
+    el.innerHTML = `
+      <div class="container">
+        <p class="eyebrow">${ed.label}</p>
+        <div class="timeline" style="margin-top:2rem;">
+          ${ed.items
+            .map(
+              (item) => `
+            <div class="timeline-item">
+              <div class="timeline-year">${item.period.split(" ").slice(-1)}</div>
+              <div>
+                <h3 class="timeline-org">${item.degree}</h3>
+                <p class="timeline-role">${item.school}</p>
+                <p class="timeline-period">${item.period}</p>
+                <div class="edu-course-list">
+                  ${item.coursework.map((c) => `<span>${c}</span>`).join("")}
+                </div>
+              </div>
+            </div>`
+            )
+            .join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderSkills() {
+    const el = document.getElementById("skills-root");
+    if (!el) return;
+    const s = D.skills;
+    el.innerHTML = `
+      <div class="container">
+        <p class="eyebrow">${s.label}</p>
+        <div class="skills-grid" style="margin-top:2rem;">
+          ${s.categories
+            .map(
+              (c) => `
+            <div class="skill-card">
+              <h3>${c.title}</h3>
+              <ul>${c.items.map((i) => `<li>${i}</li>`).join("")}</ul>
+            </div>`
+            )
+            .join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderCredentials() {
+    const el = document.getElementById("credentials-root");
+    if (!el) return;
+    const c = D.certifications;
+    el.innerHTML = `
+      <div class="container">
+        <p class="eyebrow">${c.label}</p>
+        <div class="cred-grid" style="margin-top:2rem;">
+          ${c.items
+            .map(
+              (item) => `
+            <div class="cred-row">
+              <span class="cred-name">${item.name}</span>
+              <span class="cred-issuer">${item.issuer}</span>
+              <span class="cred-date">${item.date}</span>
+            </div>`
+            )
+            .join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderBeyond() {
+    const el = document.getElementById("beyond-root");
+    if (!el) return;
+    const b = D.beyondTheCode;
+    el.innerHTML = `
+      <div class="container">
+        <p class="eyebrow">${b.label}</p>
+        <p class="prose beyond-intro" style="margin-top:1rem;">${b.intro}</p>
+        <div class="beyond-grid">
+          ${b.dimensions
+            .map(
+              (d, idx) => `
+            <div class="beyond-card-wrapper" data-card="${idx}">
+              <div class="beyond-card-inner">
+                <div class="beyond-card-front">
+                  <div class="beyond-card">
+                    <p class="beyond-num">${d.number}</p>
+                    <h3>${d.title}</h3>
+                    <ul>${d.items.map((i) => `<li>${i}</li>`).join("")}</ul>
+                    <div class="beyond-flip-hint">Click to flip</div>
+                  </div>
+                </div>
+                <div class="beyond-card-back">
+                  <h4>More about ${d.title}</h4>
+                  <p>${d.backContent || d.items.join(' • ')}</p>
+                  <div class="beyond-flip-hint">Click to flip back</div>
+                </div>
+              </div>
+            </div>`
+            )
+            .join("")}
+        </div>
+      </div>
+    `;
+    
+    // Attach flip event listeners
+    document.querySelectorAll('.beyond-card-wrapper').forEach(wrapper => {
+      wrapper.addEventListener('click', function() {
+        this.classList.toggle('flipped');
+      });
+    });
+  }
+
+  function renderTerminal() {
+    const el = document.getElementById("terminal-root");
+    if (!el) return;
+    const t = D.terminal;
+    el.innerHTML = `
+      <div class="container">
+        <div class="terminal">
+          <div class="terminal-bar"><span></span><span></span><span></span></div>
+          <div class="terminal-body">
+            ${t.lines
+              .map(
+                (l, i) => `
+              <div class="term-line"><span class="term-prompt">$</span> ${l.cmd}</div>
+              <div class="term-output">${l.output}${i === t.lines.length - 1 ? '<span class="term-cursor"></span>' : ""}</div>`
+              )
+              .join("")}
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderContact() {
+    const el = document.getElementById("contact-root");
+    if (!el) return;
+    const c = D.contact;
+    el.innerHTML = `
+      <div class="container contact-section">
+        <h2 class="contact-heading">${c.label}</h2>
+        <p class="contact-text">${c.text}</p>
+        <div class="contact-actions">
+          <div class="btn-row">
+            <a class="btn btn-primary" href="mailto:${c.email}">Email me</a>
+            <a class="btn btn-secondary" href="${c.linkedin}" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderHomeOnce() {
+    renderHero();
+    renderAbout();
+    renderWork();
+    renderExperience();
+    renderEducation();
+    renderSkills();
+    renderCredentials();
+    renderBeyond();
+    renderTerminal();
+    renderContact();
+  }
+
+  /* ---------------- case-study view (inside the Work tab) ---------------- */
+  function caseStudyNav(prev, next) {
+    return `
+      <div class="container cs-nav-between">
+        <a href="#case-study/${prev.slug}">&larr; ${prev.name}</a>
+        <a href="#case-study/${next.slug}">${next.name} &rarr;</a>
+      </div>
+    `;
+  }
+
+  function renderCaseStudy(slug) {
+    const root = document.getElementById("work-case-study-view");
+    if (!root) return;
+    const list = D.projects;
+    const project = list.find((p) => p.slug === slug) || list[0];
+    const idx = list.findIndex((p) => p.slug === project.slug);
+    const prev = list[(idx - 1 + list.length) % list.length];
+    const next = list[(idx + 1) % list.length];
+
+    document.title = `${project.name} \u2014 ${D.meta.shortName}`;
+
+    if (project.type === "collection") {
+      root.innerHTML = `
+        <div class="cs-hero container">
+          <a class="cs-back" href="#work">&larr; Back to selected work</a>
+          <p class="eyebrow" style="margin-top:1.5rem;">${project.number} &middot; ${project.category}</p>
+          <h1 class="cs-title">${project.name}</h1>
+          <p class="prose" style="margin-top:1rem;">${project.description}</p>
+        </div>
+        <div class="cs-block container">
+          <div class="collection-grid">
+            ${project.items
+              .map((i) => `<div class="collection-card"><h4>${i.title}</h4><p>${i.description}</p></div>`)
+              .join("")}
+          </div>
+        </div>
+        ${caseStudyNav(prev, next)}
+      `;
+      return;
+    }
+
+    const cs = project.caseStudy;
+    const blocks = [
+      { n: "01", h: "Overview", body: `<p class="prose">${cs.overview}</p>` },
+      { n: "02", h: "The Problem", body: `<p class="prose">${cs.problem}</p>` },
+      { n: "03", h: "The Solution", body: `<p class="prose">${cs.solution}</p>` },
+      { n: "04", h: "My Role", body: `<p class="prose">${cs.role}</p>` },
+      {
+        n: "05",
+        h: "System Architecture",
+        body: cs.architecture
+          ? `<div class="arch-flow">${cs.architecture
+              .map(
+                (step, i) =>
+                  `<div class="arch-step">${step}</div>${i < cs.architecture.length - 1 ? '<div class="arch-arrow">&darr;</div>' : ""}`
+              )
+              .join("")}</div>`
+          : `<div class="placeholder-box">Add your system architecture here.</div>`,
+      },
+      {
+        n: "06",
+        h: "Technologies",
+        body: cs.technologies
+          ? `<p class="prose">${cs.technologies}</p>`
+          : `<div class="placeholder-box">Add confirmed technologies for this project.</div>`,
+      },
+      {
+        n: "07",
+        h: "Implementation",
+        body: cs.implementation
+          ? `<p class="prose">${cs.implementation}</p>`
+          : `<div class="placeholder-box">Add implementation notes once documented.</div>`,
+      },
+      {
+        n: "08",
+        h: "Outcome",
+        body: cs.outcome
+          ? `<p class="prose">${cs.outcome}</p>`
+          : `<div class="placeholder-box">Add measurable outcomes once available.</div>`,
+      },
+    ];
+
+    root.innerHTML = `
+      <div class="cs-hero container">
+        <a class="cs-back" href="#work">&larr; Back to selected work</a>
+        <p class="eyebrow" style="margin-top:1.5rem;">${project.number} &middot; ${project.category}</p>
+        <h1 class="cs-title">${project.name}</h1>
+        <div class="cs-meta">
+          <div class="cs-meta-item"><span>Role</span><strong>${project.role}</strong></div>
+          <div class="cs-meta-item"><span>Category</span><strong>${project.category}</strong></div>
+        </div>
+      </div>
+      ${blocks
+        .map(
+          (b) => `
+        <div class="cs-block container">
+          <div class="cs-block-head">
+            <span class="cs-block-num">${b.n}</span>
+            <div><h2>${b.h}</h2>${b.body}</div>
+          </div>
+        </div>`
+        )
+        .join("")}
+      ${caseStudyNav(prev, next)}
+    `;
+  }
+
+  function showWorkList() {
+    const list = document.getElementById("work-list-view");
+    const study = document.getElementById("work-case-study-view");
+    if (list) list.hidden = false;
+    if (study) study.hidden = true;
+    document.title = D.meta.pageTitle;
+  }
+
+  function showCaseStudy(slug) {
+    renderCaseStudy(slug);
+    const list = document.getElementById("work-list-view");
+    const study = document.getElementById("work-case-study-view");
+    if (list) list.hidden = true;
+    if (study) study.hidden = false;
+  }
+
+  /* ---------------- router ---------------- */
+  function route() {
+    const hash = decodeURIComponent(location.hash.replace(/^#/, ""));
+
+    if (hash.indexOf("case-study/") === 0) {
+      activateTab("work");
+      showCaseStudy(hash.slice("case-study/".length));
+      return;
+    }
+
+    const tab = TAB_IDS.indexOf(hash) !== -1 ? hash : "home";
+    activateTab(tab);
+    if (tab === "work") showWorkList();
+  }
+
+  /* ---------------- boot ---------------- */
+  function safe(fn, label) {
+    try {
+      fn();
+    } catch (err) {
+      console.error("[portfolio]", label || fn.name, err);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    safe(initTheme, "initTheme");
+    safe(renderTabs, "renderTabs");
+    safe(renderFooter, "renderFooter");
+    safe(renderHomeOnce, "renderHomeOnce");
+    safe(initAboutPhoto, "initAboutPhoto");
+
+    safe(route, "route");
+    window.addEventListener("hashchange", () => safe(route, "route"));
+  });
+})();
+  </script>
+</body>
+</html>
